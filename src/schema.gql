@@ -1,0 +1,407 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Achievement {
+  id: String!
+  name: String!
+  desc: String!
+  reward: Float!
+  hidden: Boolean!
+  order: Float!
+}
+
+type AchievementCategory {
+  id: String!
+  originalId: Float
+  name: String!
+  order: Float!
+  achievements: [Achievement!]!
+}
+
+type ArtifactSet {
+  id: String!
+  name: String!
+  description: String
+}
+
+type Artifact {
+  id: String!
+  name: String!
+  min_rarity: Float!
+  max_rarity: Float!
+  flower: ArtifactSet
+  plume: ArtifactSet
+  sands: ArtifactSet
+  goblet: ArtifactSet
+  circlet: ArtifactSet
+  one_pc: String
+  two_pc: String
+  four_pc: String
+}
+
+type AscensionMaterial {
+  id: String!
+  name: String!
+  amount: Float!
+  rarity: Float!
+}
+
+type Item {
+  id: String!
+  name: String!
+  amount: Float!
+}
+
+type Craft {
+  cost: Float!
+  items: [Item!]!
+}
+
+type CommonMaterial {
+  id: String!
+  name: String!
+  description: String!
+  source: [String!]!
+  rarity: Float!
+  craft: Craft
+}
+
+type ElementalStoneMaterial {
+  id: String!
+  name: String!
+  description: String!
+  source: [String!]!
+  rarity: Float!
+}
+
+type JewelMaterial {
+  id: String!
+  name: String!
+  description: String!
+  source: [String!]!
+  rarity: Float!
+  craft: Craft
+  convert: [[Item!]!]
+}
+
+type LocalMaterial {
+  id: String!
+  name: String!
+  description: String!
+  source: [String!]!
+  location: String!
+}
+
+type Potion {
+  id: String!
+  name: String!
+  description: String!
+  effect: String!
+  rarity: Float!
+  craft: Craft!
+}
+
+type TalentLvlUpMaterial {
+  id: String!
+  name: String!
+  description: String!
+  source: [String!]!
+  location: String
+  rarity: Float!
+  craft: Craft
+  domain: String
+  days: [String!]
+}
+
+type WeaponPrimaryMaterial {
+  id: String!
+  name: String!
+  description: String!
+  source: [String!]!
+  location: String!
+  rarity: Float!
+  craft: Craft
+  domain: String!
+  days: [String!]!
+}
+
+type WeaponSecondaryMaterial {
+  id: String!
+  name: String!
+  description: String!
+  source: [String!]!
+  rarity: Float!
+  craft: Craft
+}
+
+type ExpMaterial {
+  id: String!
+  name: String!
+  description: String!
+  rarity: Float!
+  exp: Float!
+}
+
+type Recipe {
+  id: String!
+  name: String!
+}
+
+type Ingredients {
+  id: String!
+  name: String!
+  description: String!
+  processing: [Item!]
+  recipes: [Recipe!]
+}
+
+type CharacterVoice {
+  english: String!
+  chinese: String!
+  japanese: String!
+  korean: String!
+}
+
+type SkillAttribute {
+  label: String!
+  values: [String!]!
+}
+
+type Skill {
+  id: String!
+  name: String!
+  description: String!
+  info: String!
+  attributes: [SkillAttribute!]!
+}
+
+type Passive {
+  id: String!
+  name: String!
+  description: String!
+  level: Float!
+}
+
+type Constellation {
+  id: String!
+  name: String!
+  description: String!
+  level: Float!
+}
+
+type Ascension {
+  ascension: Float!
+  level: [Float!]!
+  cost: Float!
+  mat1: AscensionMaterial!
+  mat2: AscensionMaterial
+  mat3: AscensionMaterial!
+  mat4: AscensionMaterial!
+}
+
+type TalentMaterial {
+  level: Float!
+  cost: Float!
+  items: [AscensionMaterial!]!
+}
+
+type DOB {
+  day: Float
+  month: Float
+}
+
+type Character {
+  id: String!
+  name: String!
+  title: String!
+  description: String!
+  weapon_type: String!
+  element: String!
+  gender: String!
+  substat: String!
+  affiliation: String!
+  region: String
+  rarity: Float!
+  dob: DOB!
+  constellation: String!
+  domain: String!
+  cv: CharacterVoice!
+  skills: [Skill!]!
+  passives: [Passive!]!
+  constellations: [Constellation!]!
+  ascension: [Ascension!]!
+  talent_materials: [TalentMaterial!]!
+}
+
+type CraftItem {
+  id: String!
+  name: String!
+  amount: Float!
+}
+
+type _Craft {
+  items: [CraftItem!]!
+  result: Float!
+}
+
+type _Bait {
+  id: String!
+  name: String!
+  rarity: Float!
+}
+
+type _Fish {
+  id: String!
+  name: String!
+  rarity: Float!
+}
+
+type Fish {
+  id: String!
+  name: String!
+  description: String!
+  rarity: Float!
+  source: [String!]!
+  bait: _Bait!
+}
+
+type FishingRod {
+  id: String!
+  name: String!
+  description: String!
+  rarity: Float!
+  source: [String!]!
+}
+
+type Bait {
+  id: String!
+  name: String!
+  description: String
+  rarity: Float!
+  craft: _Craft!
+  fish: [_Fish!]!
+}
+
+type Ingredient {
+  id: String!
+  name: String!
+  amount: Float!
+}
+
+type FoodStatus {
+  name: String!
+  description: String!
+  effect: String!
+}
+
+type FoodSpecial {
+  name: String!
+  description: String!
+  effect: String!
+  character: Character!
+}
+
+type FoodResult {
+  normal: FoodStatus!
+  delicious: FoodStatus!
+  suspicious: FoodStatus!
+  special: FoodSpecial
+}
+
+type Food {
+  id: String!
+  name: String!
+  description: String!
+  ingredients: [Ingredient!]!
+  dish_type: String!
+  results: FoodResult!
+  rarity: Float!
+}
+
+type FurnitureRecipe {
+  id: String!
+  name: String!
+  amount: String!
+}
+
+type FurnitureCategory {
+  id: Float!
+  category: String!
+  type: String
+}
+
+type Furnishing {
+  id: String!
+  originalId: Float!
+  name: String!
+  description: String!
+  rarity: Float!
+  load: Float
+  energy: Float
+  exp: Float
+  category: [FurnitureCategory!]!
+  recipe: [FurnitureRecipe!]
+}
+
+type WeaponAscension {
+  ascension: Float
+  level: Float
+  cost: Float
+  materials: [AscensionMaterial!]
+}
+
+type StatLevel {
+  ascension: Float!
+  level: Float!
+  primary: Float!
+  secondary: Float
+}
+
+type WeaponStat {
+  primary: String!
+  secondary: String
+  levels: [StatLevel!]!
+}
+
+type Weapon {
+  id: String!
+  name: String!
+  description: String!
+  rarity: Float!
+  type: String!
+  domain: String!
+  passive: String!
+  bonus: String!
+  stats: WeaponStat!
+  ascensions: [WeaponAscension!]!
+  refinements: [WeaponAscension!]!
+}
+
+type Query {
+  characters(lang: String): [Character!]!
+  character(id: String!, lang: String): Character!
+  weapons(lang: String): [Weapon!]!
+  weapon(id: String!, lang: String): Weapon!
+  artifacts(lang: String): [Artifact!]!
+  artifact(id: String!, lang: String): Artifact!
+  foods(lang: String): [Food!]!
+  food(id: String!, lang: String): Food!
+  achievementCategories(lang: String): [AchievementCategory!]!
+  achievementCategory(id: String!, lang: String): AchievementCategory!
+  commonMaterials(lang: String): [CommonMaterial!]!
+  elementalStoneMaterials(lang: String): [ElementalStoneMaterial!]!
+  jewelsMaterials(lang: String): [JewelMaterial!]!
+  localMaterials(lang: String): [LocalMaterial!]!
+  potions(lang: String): [Potion!]!
+  talentLvlUpMaterials(lang: String): [TalentLvlUpMaterial!]!
+  weaponPrimaryMaterials(lang: String): [WeaponPrimaryMaterial!]!
+  weaponSecondaryMaterials(lang: String): [WeaponSecondaryMaterial!]!
+  characterExpMaterials(lang: String): [ExpMaterial!]!
+  weaponExpMaterials(lang: String): [ExpMaterial!]!
+  ingredients(lang: String): [Ingredients!]!
+  fish(lang: String): [Fish!]!
+  fishingRods(lang: String): [FishingRod!]!
+  baits(lang: String): [Bait!]!
+  furnishing(lang: String): [Furnishing!]!
+}
